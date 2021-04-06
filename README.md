@@ -1,6 +1,6 @@
 # wat_monitor 💧
 
-A Flutter IoT app to monitor equal distribution, leakages and water quality and to notify accordingly.
+A Flutter IoT app to monitor equal distribution, leakages, water quality and to notify accordingly.
 
 ## Concepts used 📑
 
