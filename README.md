@@ -9,10 +9,16 @@ A simple app to monitor equal distribution, leakages and water quality and to no
 - Firebase Firestore
 - Flutter
 
-## Feautures 📲
+## Feautures 💎
 
 - Realtime chart info on water flow
 - Realtime water quality
 - Up to date notification
 - Leakage notification
 - Secure access using Firebase Authentication
+
+## Screens 📱
+
+- Sign in
+- HomePage
+- Station Info
