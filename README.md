@@ -22,3 +22,4 @@ A simple app to monitor equal distribution, leakages and water quality and to no
 - Sign in
 - HomePage
 - Station Info
+- Notifications
