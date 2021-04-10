@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:wat_monitor/AuthenticationService.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +6,9 @@ import 'package:wat_monitor/screens/Stationpage.dart';
 import 'package:wat_monitor/screens/Notification.dart';
 
 class Homepage extends StatelessWidget {
+  final ref = FirebaseDatabase.instance.reference();
+  final stationName = Homepage.Name;
+
   static String Name;
   @override
   Widget build(BuildContext context) {
@@ -54,12 +58,14 @@ class Homepage extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) =>StationPage(),
                     ),
                   );
+
                   Name = "Main Station 1";
                 },
                 child: Container(
