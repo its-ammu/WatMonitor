@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wat_monitor/AuthenticationService.dart';
 import 'package:provider/provider.dart';
+import 'package:wat_monitor/screens/Stationpage.dart';
+import 'package:wat_monitor/screens/Notification.dart';
 
-class Homepage extends StatefulWidget {
-  @override
-  _HomepageState createState() => _HomepageState();
-}
-
-class _HomepageState extends State<Homepage> {
+class Homepage extends StatelessWidget {
+  static String Name;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,7 +16,14 @@ class _HomepageState extends State<Homepage> {
           actions: [
             IconButton(
               icon: Icon(Icons.notifications),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NotificationPage(),
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -47,41 +52,52 @@ class _HomepageState extends State<Homepage> {
                   ),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        offset: const Offset(
-                          5.0,
-                          5.0,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>StationPage(),
+                    ),
+                  );
+                  Name = "Main Station 1";
+                },
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: const Offset(
+                            5.0,
+                            5.0,
+                          ),
+                          blurRadius: 10.0,
+                          spreadRadius: 1.0,
+                        )
+                      ]),
+                  margin: EdgeInsets.symmetric(
+                    vertical: 20,
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.3,
+                        padding: EdgeInsets.all(10),
+                        child: Image.asset(
+                          "assets/images/MainStation.png",
                         ),
-                        blurRadius: 10.0,
-                        spreadRadius: 1.0,
-                      )
-                    ]),
-                margin: EdgeInsets.symmetric(
-                  vertical: 20,
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.3,
-                      padding: EdgeInsets.all(10),
-                      child: Image.asset(
-                        "assets/images/MainStation.png",
                       ),
-                    ),
-                    Container(
-                      child: Text("Main Station 1",
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.04,
-                          )),
-                    ),
-                  ],
+                      Container(
+                        child: Text("Main Station 1",
+                            style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.width * 0.04,
+                            )),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Container(
@@ -97,84 +113,107 @@ class _HomepageState extends State<Homepage> {
                   ),
                 ),
               ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            offset: const Offset(
-                              5.0,
-                              5.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>StationPage(),
+                        ),
+                      );
+                      Name = "Sub Station 1";
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              offset: const Offset(
+                                5.0,
+                                5.0,
+                              ),
+                              blurRadius: 10.0,
+                              spreadRadius: 1.0,
+                            )
+                          ]),
+                      margin: EdgeInsets.symmetric(
+                        vertical: 20,
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.25,
+                            padding: EdgeInsets.all(10),
+                            child: Image.asset(
+                              "assets/images/MainStation.png",
                             ),
-                            blurRadius: 10.0,
-                            spreadRadius: 1.0,
-                          )
-                        ]),
-                    margin: EdgeInsets.symmetric(
-                      vertical: 20,
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.25,
-                          padding: EdgeInsets.all(10),
-                          child: Image.asset(
-                            "assets/images/MainStation.png",
                           ),
-                        ),
-                        Container(
-                          child: Text("Sub Station 1",
-                              style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.04,
-                              )),
-                        ),
-                      ],
+                          Container(
+                            child: Text("Sub Station 1",
+                                style: TextStyle(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                )),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            offset: const Offset(
-                              5.0,
-                              5.0,
-                            ),
-                            blurRadius: 10.0,
-                            spreadRadius: 1.0,
-                          )
-                        ]),
-                    margin: EdgeInsets.symmetric(
-                      vertical: 20,
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.25,
-                          padding: EdgeInsets.all(10),
-                          child: Image.asset(
-                            "assets/images/MainStation.png",
-                          ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>StationPage(),
                         ),
-                        Container(
-                          child: Text("Sub Station 2",
-                              style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.04,
+                      );
+                      Name = "Sub Station 2";
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              offset: const Offset(
+                                5.0,
+                                5.0,
                               ),
+                              blurRadius: 10.0,
+                              spreadRadius: 1.0,
+                            )
+                          ]),
+                      margin: EdgeInsets.symmetric(
+                        vertical: 20,
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.25,
+                            padding: EdgeInsets.all(10),
+                            child: Image.asset(
+                              "assets/images/MainStation.png",
+                            ),
                           ),
-                        ),
-                      ],
+                          Container(
+                            child: Text("Sub Station 2",
+                                style: TextStyle(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -196,3 +235,4 @@ class _HomepageState extends State<Homepage> {
     );
   }
 }
+
