@@ -72,12 +72,12 @@ class Stationcheck extends StatelessWidget {
             print(lists[0]["Quality"]);
             if (!(lists[0]["Quality"] > 6.5 &&
                 lists[0]["Quality"] < 8.5)) {
-              notificationPlugin.showNotification("Test", "Test");
+              notificationPlugin.showNotification("Water quality is bad", "In "+ station);
             }
             if (lists[0]["Flowrate"] == 0) {
               if (lists[0]["Limit"] != lists[0]["WaterRecieved"]) {
                 notificationPlugin.showNotification(
-                    "There is a leakage", "Pipes in Main Station 1");
+                    "There is a leakage", "Pipes in " + station);
               }
             }
             return new ListView.builder(
