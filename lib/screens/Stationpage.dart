@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:wat_monitor/NotificationPlugin.dart';
 import 'package:wat_monitor/screens/Homepage.dart';
 
 class StationPage extends StatefulWidget {
@@ -414,6 +415,11 @@ class info extends StatelessWidget {
             );
           }),
     );
+
+  }
+
+  Future<void> check() async {
+
   }
 
   String getQuality(double quality) {
