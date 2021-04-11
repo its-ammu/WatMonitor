@@ -6,14 +6,13 @@ A Flutter IoT app to monitor equal distribution, leakages, water quality and to 
 
 - Firebase Auth
 - Firebase Realtime database
-- Firebase Firestore
 - Flutter
 
 ## Feautures 💎
 
 - Realtime chart info on water flow
 - Realtime water quality
-- Up to date notification
+- Quality notifications
 - Leakage notification
 - Secure access using Firebase Authentication
 
@@ -23,3 +22,15 @@ A Flutter IoT app to monitor equal distribution, leakages, water quality and to 
 - HomePage
 - Station Info
 - Notifications
+
+## Sign In Page
+
+ <img src="https://github.com/its-ammu/WatMonitor/blob/master/Signin.png" height="500">
+
+## Homepage
+
+<img src="https://github.com/its-ammu/WatMonitor/blob/master/HomePage.png" height="500">
+
+## Station Dashboard
+
+<img src="https://github.com/its-ammu/WatMonitor/blob/master/Dashboard.png" height="500">
