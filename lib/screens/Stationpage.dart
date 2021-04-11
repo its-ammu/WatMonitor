@@ -1,12 +1,11 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:wat_monitor/screens/Homepage.dart';
 
-
 class StationPage extends StatefulWidget {
   final FirebaseApp app;
+
   StationPage({this.app});
 
   @override
@@ -15,13 +14,17 @@ class StationPage extends StatefulWidget {
 
 class _StationPageState extends State<StationPage> {
   @override
-
   final referenceDatabase = FirebaseDatabase.instance;
+
   @override
   Widget build(BuildContext context) {
     final ref = referenceDatabase.reference();
 
-    Query lastQuery = referenceDatabase.reference().child("Main Station 1").orderByKey().limitToLast(1);
+    Query lastQuery = referenceDatabase
+        .reference()
+        .child("Main Station 1")
+        .orderByKey()
+        .limitToLast(1);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -29,7 +32,7 @@ class _StationPageState extends State<StationPage> {
           backgroundColor: Color(0xff08517C),
         ),
         body: Container(
-           child: info(),
+          child: info(),
           // Column(
           //   mainAxisAlignment: MainAxisAlignment.center,
           //   children: [
@@ -192,8 +195,13 @@ class _StationPageState extends State<StationPage> {
     );
   }
 }
+
 class info extends StatelessWidget {
-  final dbRef =FirebaseDatabase.instance.reference().child(Homepage.Name).orderByKey().limitToLast(1);
+  final dbRef = FirebaseDatabase.instance
+      .reference()
+      .child(Homepage.Name)
+      .orderByKey()
+      .limitToLast(1);
   List<Map<dynamic, dynamic>> lists = [];
 
   @override
@@ -257,17 +265,22 @@ class info extends StatelessWidget {
                                       style: TextStyle(
                                         color: Color(0xff08517C),
                                         fontWeight: FontWeight.w900,
-                                        fontSize: MediaQuery.of(context).size.width * 0.05,
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                0.05,
                                       ),
                                     ),
                                   ),
                                   Container(
                                     margin: EdgeInsets.all(8),
                                     child: Text(
-                                      lists[index]["Limit"].toString() +" Litres",
+                                      lists[index]["Limit"].toString() +
+                                          " Litres",
                                       style: TextStyle(
                                         fontWeight: FontWeight.w900,
-                                        fontSize: MediaQuery.of(context).size.width * 0.09,
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                0.09,
                                       ),
                                     ),
                                   ),
@@ -307,8 +320,10 @@ class info extends StatelessWidget {
                                           style: TextStyle(
                                             color: Color(0xff08517C),
                                             fontWeight: FontWeight.w900,
-                                            fontSize:
-                                                MediaQuery.of(context).size.width * 0.05,
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.05,
                                           ),
                                         ),
                                       ),
@@ -318,8 +333,10 @@ class info extends StatelessWidget {
                                           getQuality(lists[index]["Quality"]),
                                           style: TextStyle(
                                             fontWeight: FontWeight.w900,
-                                            fontSize:
-                                                MediaQuery.of(context).size.width * 0.05,
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.05,
                                           ),
                                         ),
                                       ),
@@ -356,8 +373,10 @@ class info extends StatelessWidget {
                                           style: TextStyle(
                                             color: Color(0xff08517C),
                                             fontWeight: FontWeight.w900,
-                                            fontSize:
-                                                MediaQuery.of(context).size.width * 0.05,
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.05,
                                           ),
                                         ),
                                       ),
@@ -367,8 +386,10 @@ class info extends StatelessWidget {
                                           lists[index]["Endpoints"].toString(),
                                           style: TextStyle(
                                             fontWeight: FontWeight.w900,
-                                            fontSize:
-                                                MediaQuery.of(context).size.width * 0.05,
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.05,
                                           ),
                                         ),
                                       ),
@@ -377,15 +398,14 @@ class info extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Waterdata(lists[index]["WaterRecieved"],lists[index]["Flowrate"]),
+                            Waterdata(lists[index]["WaterRecieved"],
+                                lists[index]["Flowrate"]),
                           ],
                         ),
                       ),
-                          // Text("Flowrate: " + lists[index]["Flowrate"].toString()),
-                          // Text("Quality: "+ lists[index]["Quality"].toString()),
-                          // Text("WaterRecieved: " +lists[index]["WaterRecieved"].toString()),
-
-
+                      // Text("Flowrate: " + lists[index]["Flowrate"].toString()),
+                      // Text("Quality: "+ lists[index]["Quality"].toString()),
+                      // Text("WaterRecieved: " +lists[index]["WaterRecieved"].toString()),
                     );
                   });
             }
@@ -397,12 +417,9 @@ class info extends StatelessWidget {
   }
 
   String getQuality(double quality) {
-
-    if(quality > 6.5 && quality < 8.5)
-      {
-        return "Good";
-      }
-    else{
+    if (quality > 6.5 && quality < 8.5) {
+      return "Good";
+    } else {
       return "Bad";
     }
   }
@@ -411,13 +428,13 @@ class info extends StatelessWidget {
 class Waterdata extends StatelessWidget {
   final recieved;
   final rate;
-  Waterdata(this.recieved,this.rate);
+
+  Waterdata(this.recieved, this.rate);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-
         Container(
           width: MediaQuery.of(context).size.width * 0.7,
           margin: EdgeInsets.all(10),
@@ -514,9 +531,7 @@ class Waterdata extends StatelessWidget {
             ],
           ),
         ),
-
       ],
     );
   }
 }
-

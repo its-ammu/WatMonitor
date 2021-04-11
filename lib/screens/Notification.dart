@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wat_monitor/NotificationPlugin.dart';
 
 class NotificationPage extends StatefulWidget {
   @override
@@ -6,6 +7,13 @@ class NotificationPage extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPage> {
+  void initState() {
+    super.initState();
+    notificationPlugin
+        .setListenerForLowerVersions(onNotificationInLowerVersions);
+    notificationPlugin.setOnNotificationClick(onNotificationClick);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,13 +27,26 @@ class _NotificationPageState extends State<NotificationPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            NotificationWidget(),
+            GestureDetector(
+              onTap: () async {
+                await notificationPlugin.showNotification();
+              },
+              child: NotificationWidget(),
+            ),
             NotificationWidget(),
             NotificationWidget(),
           ],
         ),
       ),
     );
+  }
+
+  onNotificationInLowerVersions(ReceivedNotification receivedNotification) {
+    print('Notification Received ${receivedNotification.id}');
+  }
+
+  onNotificationClick(String payload) {
+    print('Payload $payload');
   }
 }
 
@@ -39,7 +60,6 @@ class NotificationWidget extends StatelessWidget {
       padding: EdgeInsets.all(15),
       width: double.infinity,
       decoration: BoxDecoration(
-
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
@@ -58,7 +78,7 @@ class NotificationWidget extends StatelessWidget {
         children: [
           Container(
             child: Text(
-                "Notification Title",
+              "Notification Title",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: MediaQuery.of(context).size.width * 0.04,
@@ -83,4 +103,3 @@ class NotificationWidget extends StatelessWidget {
     );
   }
 }
-
