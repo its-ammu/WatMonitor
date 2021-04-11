@@ -10,7 +10,7 @@ A Flutter IoT app to monitor equal distribution, leakages, water quality and to 
 
 ## Feautures 💎
 
-- Realtime chart info on water flow
+- Realtime Dashboard
 - Realtime water quality
 - Quality notifications
 - Leakage notification
